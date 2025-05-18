@@ -86,6 +86,7 @@ public class Martinez_Andrea_ProyectoTienda {
                       double subtotal=0;
                       double descuento=0;
                       double impuesto=0;
+                      double kg = 0;
                       
                      if (cajaabierta) {
                           if(contadorazucar==0 && contadoravena==0 && contadormaiz==0 && contadortrigo==0){
@@ -186,7 +187,7 @@ public class Martinez_Andrea_ProyectoTienda {
                            
                                     
                             System.out.print("Ingrese la cantidad a comprar(kg): ");
-                            double kg = texto.nextDouble();
+                             kg = texto.nextDouble();
                         if (kg<=0){
                             System.out.println("Cantidad Invalida.");
                         }else if (disponible < kg){
@@ -195,8 +196,8 @@ public class Martinez_Andrea_ProyectoTienda {
                         }else{
                             subtotal = kg * precioventas;
                             cotadorventas++;
-                            System.out.println("\nPrecio por kg: " +kg);
-                            System.out.println("Subtotal: " +totalapagarventas);
+                            System.out.println("\nPrecio por kg: " +precioventas);
+                            System.out.println("Subtotal: " +subtotal);
                             switch (codigoprodu){
                                 case 1: contadorazucar -= kg;
                                         break; 
@@ -217,7 +218,10 @@ public class Martinez_Andrea_ProyectoTienda {
                             
                            }
                            
-                           if (subtotal>0){
+                     
+                           
+                       }
+                            if (subtotal>0){
                                if(subtotal>=5000){
                                descuento = subtotal*0.10;
                                }else if(subtotal>1000){
@@ -229,25 +233,20 @@ public class Martinez_Andrea_ProyectoTienda {
                                impuesto = (subtotal-descuento)*0.07;
                                totalapagar = subtotal - descuento + impuesto;
                                System.out.println("\n=== FACTURA ===");
-                               System.out.println("Nombre del prodducto: " +nombreprodu);
-                               System.out.println("Cantidad de kg: " +kg);
-                               System.out.printf("Precio unitario por kg: " +precioventas);
-                               System.out.println("Subtotal: " +subtotal);
+
+                               System.out.printf("\nSubtotal: L. %.2f%n" +subtotal);
                                if (descuento>0){
                                 System.out.println("Descuento:" +descuento);
                                }else {
                                 System.out.println("Descuento: No aplica un descuento");
                                }
-                                System.out.println("Impuesto: " +impuesto);
-                                System.out.println("Total a Pagar: " +totalapagar);
+                                System.out.printf("Impuesto: L. %.2f%n" +impuesto);
+                                System.out.printf("Total a Pagar: L. %.2f%n" +totalapagar);
                                 
                                 efectivo += subtotal;
                            }else {
                                System.out.println("No se hizo alguna venta.");
                            }
-                           
-                       }
-                      
                      } else{
                            System.out.println("No puede ingresar al apartado de ventas si la caja esta cerrada.");
                                }
