@@ -20,6 +20,9 @@ public class Martinez_Andrea_ProyectoTienda {
          double efectivo =0 ;
          String sino="";
          boolean cajaabierta = false;
+         int cotadorventas=0, contadorcompras = 0;
+         int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
+         int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
 
          do{
              //menu 
@@ -76,8 +79,17 @@ public class Martinez_Andrea_ProyectoTienda {
                       double precioproducto = 0;
                       String producto ="";
                       int codigoprodu=0;
-                       
+                      boolean puedevender = false;
+                      String nombreprodu = "";
+                      double precioventas=0;
+                      double totalapagarventas =0;
+
+                      
                      if (cajaabierta) {
+                          if(contadorazucar==0 && contadoravena==0 && contadormaiz==0 && contadortrigo==0){
+                         System.out.println("No hay ningun producto disponible."); 
+                         continue;
+                     }
                        System.out.println("Bienvenido al apartado de ventas !");
                        System.out.print("Ingrese el tipo de cliente (A/B/C): ");
                        String TipoClien = texto.next().toLowerCase();
@@ -134,11 +146,56 @@ public class Martinez_Andrea_ProyectoTienda {
                               System.out.println("Datos invalidos, ingrese de nuevo los datos");
                               texto.nextLine();
                                  }}
+                          
+                           switch (codigoprodu){
+                               case 1: 
+                                   if(TipoClien.equals("a") || TipoClien.equals("b")){
+                                   puedevender = true;
+                                   nombreprodu = "Azucar";
+                                   disponible = contadorazucar;
+                                   precioventas = 30;
+                                   }
+                                   break;   
+                               case 2:
+                                   if(TipoClien.equals("a") || TipoClien.equals("b")){
+                                   puedevender = true;
+                                   nombreprodu = "Avena";
+                                   disponible = contadoravena;
+                                   precioventas = 25;
+                                   }
+                                   break;
+                               case 3:
+                                   if(TipoClien.equals("a") || TipoClien.equals("b")){
+                                   puedevender = true;
+                                   nombreprodu = "Trigo";
+                                   disponible = contadortrigo;
+                                   precioventas = 32;
+                                   }
+                                   break;
+                               case 4:
+                                   if(TipoClien.equals("a") || TipoClien.equals("c")){
+                                   puedevender = true;
+                                   nombreprodu = "Maiz";
+                                   disponible = contadormaiz;
+                                   precioventas = 20;
+                                   }
+                                   break;
+                           }
+                           
                                     
                             System.out.print("Ingrese la cantidad a comprar(kg): ");
                             double kg = texto.nextDouble();
+                        if (kg<=0){
+                            System.out.println("Cantidad Invalida.");
+                        }else if (disponible < kg){
+                            System.out.println("No hay suficiente producto.");
+                            System.out.println("Cantidad de kg actualmente: " +disponible);
+                        }else{
+                            totalapagarventas = kg * precioventas;
+                            
+                        }
                         
-                     
+                          
                            System.out.println("\nQuisiera agregar/comprar otro producto?(Si/No)");
                            String sinoventas = texto.next().toLowerCase();
                            if(!sinoventas.equals("si")){
@@ -146,7 +203,8 @@ public class Martinez_Andrea_ProyectoTienda {
                             
                            }
                        }
-                     }else{
+                      
+                     } else{
                            System.out.println("No puede ingresar al apartado de ventas si la caja esta cerrada.");
                                }
                  
@@ -154,10 +212,10 @@ public class Martinez_Andrea_ProyectoTienda {
                    
                case 3: //compras
                    int codproducompra=0;
-                   String nombreproducto="";
-                   double preciodecompra = 0;
                    boolean puedecomprar = false;
-                   
+                   double kgcompras =0,totalcompra=0;
+                   String nombreproducto="";
+
                    System.out.println("\n****** COMPRAS ******");
 
                      if (cajaabierta==true){
@@ -208,6 +266,7 @@ public class Martinez_Andrea_ProyectoTienda {
                              texto.next();
                          }
                         }
+                             double preciodecompra=0;
 
                          switch (codproducompra){
                              case 1:
@@ -216,8 +275,10 @@ public class Martinez_Andrea_ProyectoTienda {
                                  preciodecompra= 25;
                                  nombreproducto = "Azucar";
                                  comprar = true;
+
                                  }else{
-                                    System.out.println("El proveedor no ofrece Azucar");
+                                    System.out.println("El proveedor no vende dicho producto");
+                                     comprar = true;
                                  }
                                 break;
                             case 2:
@@ -232,7 +293,8 @@ public class Martinez_Andrea_ProyectoTienda {
                                  nombreproducto = "Avena";
                                  comprar = true;
                                  }else {
-                                     System.out.println("El proveedor no ofrece Avena");
+                                     System.out.println("El proveedor no vende dicho producto");
+                                      comprar = true;
                                  }
                                 break;
                              case 3:
@@ -242,7 +304,8 @@ public class Martinez_Andrea_ProyectoTienda {
                                  nombreproducto = "Trigo";
                                  comprar = true;
                                  }else{
-                                    System.out.println("El proveedor no ofrece Trigo");
+                                    System.out.println("El proveedor  no vende dicho producto");
+                                     comprar = true;
                                  }
                                 break;
                               case 4:
@@ -252,13 +315,55 @@ public class Martinez_Andrea_ProyectoTienda {
                                  nombreproducto = "Maiz";
                                  comprar = true;
                                  }else{
-                                    System.out.println("El proveedor no ofrece Maiz");
+                                    System.out.println("El proveedor  no vende dicho producto");
+                                    comprar = true;
                                  }
                                 break;
                          }
                          
+                         if (puedecomprar){
                          
-                              }
+                            System.out.print("Ingrese la cantidad a comprar(kg): ");
+                            kgcompras = texto.nextInt();
+                            
+                            if (kgcompras <=0){
+                                System.out.println("Cantidad Invalida.");
+                            }else{
+                            
+                            totalcompra = kgcompras * preciodecompra;
+                            
+                            if(totalcompra<= efectivo){
+                                efectivo -= totalcompra;
+                               contadorcompras++;
+                               switch (codproducompra){
+                                    case 1:
+                                        contadorazucar+=kgcompras;
+                                        break;
+                                    case 2:
+                                        contadoravena +=kgcompras;
+                                        break;
+                                    case 3:
+                                        contadortrigo += kgcompras;
+                                        break;
+                                    case 4:
+                                        contadormaiz += kgcompras;
+                                        break;
+                               }
+                   
+                                
+                                System.out.println("\n  Compra realizada con exito. ");
+                                System.out.println("\n=== DETALLES: ===");
+                                System.out.println("Producto: "+nombreproducto);
+                                System.out.println("Precio por kg: " +preciodecompra);
+                                System.out.println("Cantidad (kg): " +kgcompras);
+                                System.out.println("Total a pagar: " +totalcompra);
+                                System.out.println("Efectivo restante: " +efectivo);
+                            
+                            }else{
+                                System.out.println("No se puede pagar la compra");
+                            }
+                              }}
+                        }
                         
                       
                    } else {
@@ -281,7 +386,7 @@ public class Martinez_Andrea_ProyectoTienda {
                         
                         
                         
-                       System.out.println("\n******* CIERRE DE CAJA  ******");
+                       System.out.println("\n******* CIERRE DE CAJA  *******");
                         System.out.printf("Actualmente tiene en la caja una cantidad de: %.2f%n " ,efectivo);
 
                        System.out.println("Esta seguro de cerrar la caja? (Si/No)");
