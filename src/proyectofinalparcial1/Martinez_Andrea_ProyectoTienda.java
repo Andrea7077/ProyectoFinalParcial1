@@ -192,7 +192,21 @@ public class Martinez_Andrea_ProyectoTienda {
                             System.out.println("Cantidad de kg actualmente: " +disponible);
                         }else{
                             totalapagarventas = kg * precioventas;
-                            
+                            efectivo += totalapagarventas;
+                            cotadorventas++;
+                            System.out.println("\nPrecio por kg: " +kg);
+                            System.out.println("Total a pagar: " +totalapagarventas);
+                            switch (codigoprodu){
+                                case 1: contadorazucar -= kg;
+                                        break; 
+                                case 2: contadoravena -= kg;
+                                        break;
+                                case 3: contadortrigo -= kg;
+                                        break;
+                                case 4: contadormaiz -= kg;
+                                        break;
+                            }
+                              System.out.println("VENTA REALIZADA CON EXITO");
                         }
                         
                           
