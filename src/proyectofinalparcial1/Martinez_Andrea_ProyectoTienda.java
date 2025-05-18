@@ -207,7 +207,6 @@ public class Martinez_Andrea_ProyectoTienda {
                              System.out.print("Ingrese el codigo del producto:");
                              texto.next();
                          }
-
                         }
 
                          switch (codproducompra){
