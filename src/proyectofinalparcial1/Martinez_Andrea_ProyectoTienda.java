@@ -198,7 +198,7 @@ public class Martinez_Andrea_ProyectoTienda {
                          if (codproducompra >=1 && codproducompra<=4){
                               validarproductoproveedor =true;                                    
                          }else{
-                            System.out.println("Datos invalidos, ingrese de nuevo los datos");
+                            System.out.println("Datos invalidos, ingrese de nuevo los dato");
 
                          }
                           
