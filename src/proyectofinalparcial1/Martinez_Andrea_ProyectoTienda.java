@@ -40,18 +40,34 @@ public class Martinez_Andrea_ProyectoTienda {
              System.out.println("5. Cierre de Caja");
              System.out.println("6. Salir");
              
-             
+             String opcionmenu = "";
              boolean entradamenu = false;
              
              while (!entradamenu){
               System.out.print("\nEliga una opcion: ");
-              
-             try{
-              opcion = texto.nextInt();
-              entradamenu = true;
-
-             }catch(Exception e){
-             System.out.println("No es valido, ingrese una opcion valida");
+              opcionmenu = texto.next();
+              if (opcionmenu.equals("1")){
+                  opcion =1;
+                  entradamenu = true;
+              }else if(opcionmenu.equals("2")){
+                  opcion =1;
+                  entradamenu = true;
+              }
+              else if (opcionmenu.equals("3")){
+                  opcion =1;
+                  entradamenu = true;}
+              else if (opcionmenu.equals("4")){
+                  opcion =1;
+                  entradamenu = true;}
+              else if (opcionmenu.equals("5")){
+                  opcion =1;
+                  entradamenu = true;}
+              else if (opcionmenu.equals("6")){
+                  opcion =1;
+                  entradamenu = true;}
+              else{
+             
+             System.out.println("Opcion invalidos, ingrese de nuevo los datos.");
              texto.nextLine();
 
              }}
