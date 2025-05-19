@@ -231,7 +231,7 @@ public class Martinez_Andrea_ProyectoTienda {
                             System.out.println("Cantidad de kg actualmente: " +disponible);
                         }else{
                             totalapagarventas = kg * precioventas;
-                            contadorventas++;
+                            
                             subtotal+=totalapagarventas;
                             
                             totaldeventas+=totalapagarventas;
@@ -278,7 +278,7 @@ public class Martinez_Andrea_ProyectoTienda {
                                }else if (subtotal<1000){
                                descuento = 0;
                                }
-                               
+                               contadorventas++;
                                impuesto = (subtotal-descuento)*0.07;
                                totalapagar = subtotal - descuento + impuesto;
                                System.out.println("\n=== FACTURA ===");
@@ -467,12 +467,20 @@ public class Martinez_Andrea_ProyectoTienda {
                      break;
                 case 4: //reportes
                      if (cajaabierta==true){
+                         String productoestrella="Ninguno";
                          double ganancia = totaldeventas - totaldecompras;
-                         double promediocompra=0.00, promedioventa=0.00;
+                         double promediocompra=0, promedioventa=0;
+                         
+                         if (contadorventas> 0){
+                         promedioventa = totaldeventas / contadorventas;
+                         }
+                         if (contadorcompras> 0){
+                         promediocompra = totaldecompras / contadorcompras;
+                         }
                          System.out.println("\n****** REPORTES ******");
                          System.out.printf("Efectivo en la caja actualmente L. %.2f%n" ,efectivo);
                          System.out.println("Numero de Ventas realizadas: "+contadorventas);
-                         System.out.println("Numero de Compras realizadas: "+contadorventas);
+                         System.out.println("Numero de Compras realizadas: "+contadorcompras);
                          System.out.printf("Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
                          System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);
                          System.out.println("Margen de ganancia: "+ganancia);
@@ -480,6 +488,8 @@ public class Martinez_Andrea_ProyectoTienda {
                          System.out.printf("Valor medio de compras: L. %.2f%n",promediocompra);
                          System.out.printf("Venta con mayor ganancia: L. %.2f%n",ventamayor);
                          System.out.printf("Compra con mayor ganancia: L. %.2f%n",compramayor);
+                         System.out.println("  PRODUCTO ESTRELLA ");
+                         System.out.println(productoestrella);
                       
                    } else {
                        System.out.println("No puedes ingresar a este apartado si no abres la caja");
