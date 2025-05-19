@@ -45,6 +45,7 @@ public class Martinez_Andrea_ProyectoTienda {
              
              while (!entradamenu){
               System.out.print("\nEliga una opcion: ");
+              
              try{
               opcion = texto.nextInt();
               entradamenu = true;
@@ -130,8 +131,9 @@ public class Martinez_Andrea_ProyectoTienda {
 
                           while (!validarproductocliente){
                               System.out.print("\nIngrese el codigo del producto: ");
-                            try{
                              codigoprodu = texto.nextInt();
+                              
+                           
                             
                              if (codigoprodu >=1 && codigoprodu<=4){
                                                
@@ -147,10 +149,7 @@ public class Martinez_Andrea_ProyectoTienda {
                              }else {
                               System.out.println("Codigo de producto no valido, ingrese de nuevo los datos");        
                              }
-                              }catch(Exception e){
-                              System.out.println("Datos invalidos, ingrese de nuevo los datos");
-                              texto.nextLine();
-                                 }}
+                              }
                           
                            switch (codigoprodu){
                                case 1: 
@@ -301,8 +300,8 @@ public class Martinez_Andrea_ProyectoTienda {
                         while(!validarproductoproveedor){  
 
                          System.out.print("\nIngrese el codigo del producto:");
-                         try{
-                           codproducompra = texto.nextInt();
+                         codproducompra = texto.nextInt();
+
                          if (codproducompra >=1 && codproducompra<=4){
                               validarproductoproveedor =true;                                    
                          }else{
@@ -310,11 +309,7 @@ public class Martinez_Andrea_ProyectoTienda {
 
                          }
                           
-                         }catch(Exception e){
-                             System.out.println("Codigo invalido");
-                             System.out.print("Ingrese el codigo del producto:");
-                             texto.next();
-                         }
+                         
                         }
                              double preciodecompra=0;
 
