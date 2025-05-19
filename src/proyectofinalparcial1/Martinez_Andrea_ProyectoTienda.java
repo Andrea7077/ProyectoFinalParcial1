@@ -332,7 +332,7 @@ public class Martinez_Andrea_ProyectoTienda {
                                 System.out.printf("Impuesto: L. %.2f%n" ,impuesto);
                                 System.out.printf("Total a Pagar: L. %.2f%n" ,totalapagar);
                                 
-                                efectivo += subtotal;
+                                efectivo += totalapagar;
                            }else {
                                System.out.println("No se hizo alguna venta.");
                            }
@@ -561,6 +561,8 @@ public class Martinez_Andrea_ProyectoTienda {
                      break;
                      
                case 5://cerrar caja
+                   boolean cerrarcaja=true;
+                   
                     if (cajaabierta==true){
                         double depositomaximo = efectivo * 0.60, deposito=0;
                          double ganancia = totaldeventas - totaldecompras;
@@ -578,15 +580,31 @@ public class Martinez_Andrea_ProyectoTienda {
 
                          }             
                           
+                          if (efectivo<=0){
+                              System.out.println("No hay efectivo en la caja.");
+                              System.out.println("Cerrando caja.");
+                       contadorventas=0;
+                       contadorcompras = 0;
+                       ventakgdeazucar = 0; 
+                       ventakgdeavena=0;
+                       ventakgdetrigo=0;
+                       ventakgdemaiz=0;
+                       ventamayor=0;
+                       compramayor =0; 
+                       totaldeventas=0;
+                       totaldecompras=0;
+                       reaabrir = true;
+                       cajaabierta = false;  
+                       cerrarcaja=false;
+                       continue;
+                          }
                           
+                          
+                       while(cerrarcaja){ 
                         if ( ganancia>0){                        
                         System.out.println("\n== DEPOSITAR ==");
                         System.out.println("(Debe de depositar menos o el 60% del efectivo.)");
-                        
-                        System.out.println("Deberias del efectivo desea depositar en el banco?(Si/No)");
-                        sino = texto.next().toLowerCase();
-                       
-                     if (sino.equals("si")) {
+                                                
                          System.out.printf("\nLo maximo que puede depositar es de: L. %.2f%n",depositomaximo);
                          System.out.println("Ingrese la cantidad que depositara:");
                          deposito = texto.nextDouble();
@@ -595,10 +613,26 @@ public class Martinez_Andrea_ProyectoTienda {
                          efectivo -= deposito;
                              System.out.printf("El deposito que se realizo fue de: L. %.2f%n",deposito);
                              System.out.printf("Efectivo restante: L. %.2f%n",efectivo);
-                         }else{
-                             System.out.println("No puede depositar esta cantidad. Intentelo de nuevo.");
+                             
+                             contadorventas=0;
+                       contadorcompras = 0;
+                       ventakgdeazucar = 0; 
+                       ventakgdeavena=0;
+                       ventakgdetrigo=0;
+                       ventakgdemaiz=0;
+                       ventamayor=0;
+                       compramayor =0; 
+                       totaldeventas=0;
+                       totaldecompras=0;
+                       reaabrir = true;
+                       cajaabierta = false;
+                       
+                             System.out.println("Cerrando caja.");
+                         }else if(deposito>depositomaximo/100){
+                             System.out.println("Lo que quiere depositar rebasa el maximo del 60%.");
+                         }else{ System.out.println("No puede depositar esta cantidad. Intentelo de nuevo.");
                          }
-                     }else {
+                     }else{
                          System.out.println("No se realizo algun deposito.");
                      } 
                        contadorventas=0;
@@ -613,9 +647,12 @@ public class Martinez_Andrea_ProyectoTienda {
                        totaldecompras=0;
                        reaabrir = true;
                        cajaabierta = false;
+
+                       
                       System.out.println("Caja cerrada.");
 
-                   }else{
+                   }
+                       if(cajaabierta==false){
                         System.out.println("La caja esta cerrada.");
                     
                     }}
