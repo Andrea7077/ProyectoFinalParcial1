@@ -78,14 +78,7 @@ public class Martinez_Andrea_ProyectoTienda {
                case 1: //Abrir caja
                           System.out.println("\n***** ABRIR CAJA ******");
 
-                       if (cajaabierta==true){
-                           System.out.println("Caja ya esta abierta.");
-                           estadodecaja = "Abierta.";
-                           System.out.println("Estado de caja actualmente: " +estadodecaja);
-
-                           continue;
-                       }
-                       
+                  
                        
                        if(reaabrir){
                         cajaabierta =true;
@@ -132,10 +125,10 @@ public class Martinez_Andrea_ProyectoTienda {
                      }            
                        }
                        
-                       
+                   if (cajaabierta==false){
                     estadodecaja="Cerrada.";
                     System.out.println("Estado de caja actualmente: " +estadodecaja);
-                    System.out.println("Desea abrir la caja? (Si/No)");
+                    System.out.print("Desea abrir la caja? (Si/No): ");
                     sino = texto.next().toLowerCase();
                     
                     if (sino.equals("si")) {
@@ -153,7 +146,7 @@ public class Martinez_Andrea_ProyectoTienda {
                          }else{
                           System.out.println("No se pudo abrir la caja.");
                         }
-                                   
+                   }        
                  break;
                  
                case 2: //ventas
@@ -546,11 +539,11 @@ public class Martinez_Andrea_ProyectoTienda {
                          System.out.printf("- Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
                          System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);                         
                          if(ganancia>perdida){
-                           System.out.println("- Margen de ganancia: "+ganancia);
+                           System.out.printf("- Margen de ganancia: L. %.2f%n",ganancia);
 
                          }
                           if(perdida>ganancia){
-                           System.out.println("- Margen de perdida: "+perdida);
+                           System.out.printf("- Margen de perdida: L. %.2f%n ",perdida);
 
                          }
                                                   
@@ -574,13 +567,23 @@ public class Martinez_Andrea_ProyectoTienda {
                          double perdida = totaldecompras - totaldeventas;
                        System.out.println("\n******* CIERRE DE CAJA  *******");
                         System.out.printf("Actualmente tiene en la caja una cantidad de: L. %.2f%n " ,efectivo);
-                        System.out.printf("Margen de ganacia: L. %.2f%n" ,ganancia);
                         
-                        if (ganancia>0){                        
+                        
+                        if(ganancia>perdida){
+                           System.out.printf("- Margen de ganancia: L. %.2f%n",ganancia);
+
+                         }
+                          if(perdida>ganancia){
+                           System.out.printf("- Margen de perdida: L. %.2f%n ",perdida);
+
+                         }             
+                          
+                          
+                        if ( ganancia>0){                        
                         System.out.println("\n== DEPOSITAR ==");
                         System.out.println("(Debe de depositar menos o el 60% del efectivo.)");
                         
-                       System.out.println("Cuanto del efectivo desea depositar en el banco?(Si/No)");
+                        System.out.println("Deberias del efectivo desea depositar en el banco?(Si/No)");
                         sino = texto.next().toLowerCase();
                        
                      if (sino.equals("si")) {
