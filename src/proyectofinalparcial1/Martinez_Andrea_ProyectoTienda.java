@@ -428,7 +428,6 @@ public class Martinez_Andrea_ProyectoTienda {
                             
                             if(totalcompra<= efectivo){
                                 efectivo -= totalcompra;
-                               contadorcompras++;
                                switch (codproducompra){
                                     case 1:
                                         contadorazucar+=kgcompras;
@@ -452,7 +451,8 @@ public class Martinez_Andrea_ProyectoTienda {
                                 System.out.println("Cantidad (kg): " +kgcompras);
                                 System.out.println("Total a pagar: " +totalcompra);
                                 System.out.println("Efectivo restante: " +efectivo);
-                            
+                                      contadorcompras++;
+
                             }else{
                                 System.out.println("No se puede pagar la compra");
                             }
