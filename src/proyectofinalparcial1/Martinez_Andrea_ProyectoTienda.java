@@ -23,6 +23,8 @@ public class Martinez_Andrea_ProyectoTienda {
          int cotadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
          int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
+         int kgdeazucar = 0, kgdeavena=0, kgdetrigo=0, kgdemaiz=0;
+         double ventamayor=0, compramayor =0, totaldeventas=, totaldecompras=0;
          
 
          do{
@@ -231,6 +233,12 @@ public class Martinez_Andrea_ProyectoTienda {
                             totalapagarventas = kg * precioventas;
                             cotadorventas++;
                             subtotal+=totalapagarventas;
+                            
+                            totaldeventas+=totalapagarventas;
+                            
+                            if (totalapagarventas>ventamayor){
+                             ventamayor = totalapagarventas;
+                            }
                             productosfactura+= "\n* Producto: " +nombreprodu+ " / Cantidad(kg): " +kg+ " / Precio(c/u): L. " +precioventas+" /  A pagar: "+ totalapagarventas;
                             
                             System.out.println("\nPrecio por kg: " +precioventas);
@@ -252,11 +260,7 @@ public class Martinez_Andrea_ProyectoTienda {
                            String sinoventas = texto.next().toLowerCase();
                            if(!sinoventas.equals("si")){
                             vender = false;
-                            
-                           }
-                           
-                     
-                           
+                           }          
                        }
                             if (subtotal>0){
                                if(subtotal>=5000){
@@ -451,7 +455,8 @@ public class Martinez_Andrea_ProyectoTienda {
                      break;
                 case 4: //reportes
                      if (cajaabierta==true){
-                       System.out.println("\n******* REPORTES ******");
+                       System.out.println("\n****** REPORTES ******");
+                       
                       
                    } else {
                        System.out.println("No puedes ingresar a este apartado si no abres la caja");
