@@ -515,7 +515,9 @@ public class Martinez_Andrea_ProyectoTienda {
                          String productoestrella="Ninguno";
                          int mayorkg =0;
                          double ganancia = totaldeventas - totaldecompras;
-                         double promediocompra=0, promedioventa=0;
+                         double promediocompra=0, promedioventa=0;          
+                         double perdida = totaldecompras - totaldeventas;
+
                          
                          if (contadorventas> 0){
                          promedioventa = totaldeventas / contadorventas;
@@ -542,8 +544,16 @@ public class Martinez_Andrea_ProyectoTienda {
                          System.out.println("\n- Numero de Ventas realizadas: "+contadorventas);
                          System.out.println("Numero de Compras realizadas: "+contadorcompras);
                          System.out.printf("- Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
-                         System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);
-                         System.out.println("- Margen de ganancia: "+ganancia);
+                         System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);                         
+                         if(ganancia>perdida){
+                           System.out.println("- Margen de ganancia: "+ganancia);
+
+                         }
+                          if(perdida>ganancia){
+                           System.out.println("- Margen de perdida: "+perdida);
+
+                         }
+                                                  
                          System.out.printf("- Valor medio de ventas: L. %.2f%n",promedioventa);
                          System.out.printf("Valor medio de compras: L. %.2f%n",promediocompra);
                          System.out.printf("\n- Venta con mayor ganancia: L. %.2f%n",ventamayor);
@@ -561,6 +571,7 @@ public class Martinez_Andrea_ProyectoTienda {
                     if (cajaabierta==true){
                         double depositomaximo = efectivo * 0.60, deposito=0;
                          double ganancia = totaldeventas - totaldecompras;
+                         double perdida = totaldecompras - totaldeventas;
                        System.out.println("\n******* CIERRE DE CAJA  *******");
                         System.out.printf("Actualmente tiene en la caja una cantidad de: L. %.2f%n " ,efectivo);
                         System.out.printf("Margen de ganacia: L. %.2f%n" ,ganancia);
