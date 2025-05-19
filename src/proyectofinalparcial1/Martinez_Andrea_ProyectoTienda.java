@@ -80,13 +80,14 @@ public class Martinez_Andrea_ProyectoTienda {
                       String producto ="";
                       int codigoprodu=0;
                       boolean puedevender = false;
-                      String nombreprodu = "";
+                      String nombreprodu = "", productosfactura="";
                       double precioventas=0;
                       double totalapagarventas =0, totalapagar=0;
                       double subtotal=0;
                       double descuento=0;
                       double impuesto=0;
                       double kg = 0;
+                   
                       
                      if (cajaabierta) {
                           if(contadorazucar==0 && contadoravena==0 && contadormaiz==0 && contadortrigo==0){
@@ -196,6 +197,8 @@ public class Martinez_Andrea_ProyectoTienda {
                         }else{
                             subtotal = kg * precioventas;
                             cotadorventas++;
+                            productosfactura+= "\n* Producto: " +nombreprodu+ " / Cantidad(kg): " +kg+ " / Precio(c/u): L. " +precioventas+" /  A pagar: "+subtotal;
+                            
                             System.out.println("\nPrecio por kg: " +precioventas);
                             System.out.println("Subtotal: " +subtotal);
                             switch (codigoprodu){
@@ -233,15 +236,17 @@ public class Martinez_Andrea_ProyectoTienda {
                                impuesto = (subtotal-descuento)*0.07;
                                totalapagar = subtotal - descuento + impuesto;
                                System.out.println("\n=== FACTURA ===");
-
-                               System.out.printf("\nSubtotal: L. %.2f%n" +subtotal);
+                                System.out.println("Detalles:");
+                                System.out.println(productosfactura);
+                                
+                               System.out.printf("\nSubtotal: L. %.2f%n" ,subtotal);
                                if (descuento>0){
                                 System.out.println("Descuento:" +descuento);
                                }else {
                                 System.out.println("Descuento: No aplica un descuento");
                                }
-                                System.out.printf("Impuesto: L. %.2f%n" +impuesto);
-                                System.out.printf("Total a Pagar: L. %.2f%n" +totalapagar);
+                                System.out.printf("Impuesto: L. %.2f%n" ,impuesto);
+                                System.out.printf("Total a Pagar: L. %.2f%n" ,totalapagar);
                                 
                                 efectivo += subtotal;
                            }else {
