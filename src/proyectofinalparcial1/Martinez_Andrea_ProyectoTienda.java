@@ -50,24 +50,24 @@ public class Martinez_Andrea_ProyectoTienda {
                   opcion =1;
                   entradamenu = true;
               }else if(opcionmenu.equals("2")){
-                  opcion =1;
+                  opcion =2;
                   entradamenu = true;
               }
               else if (opcionmenu.equals("3")){
-                  opcion =1;
+                  opcion =3;
                   entradamenu = true;}
               else if (opcionmenu.equals("4")){
-                  opcion =1;
+                  opcion =4;
                   entradamenu = true;}
               else if (opcionmenu.equals("5")){
-                  opcion =1;
+                  opcion =5;
                   entradamenu = true;}
               else if (opcionmenu.equals("6")){
-                  opcion =1;
+                  opcion =6;
                   entradamenu = true;}
               else{
              
-             System.out.println("Opcion invalidos, ingrese de nuevo los datos.");
+             System.out.println("Datos invalidos, ingreselos de nuevo.");
              texto.nextLine();
 
              }}
@@ -83,8 +83,10 @@ public class Martinez_Andrea_ProyectoTienda {
                       System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
                       efectivo = texto.nextDouble();
                       cajaabierta = true;
-                     }else {
-                         System.out.println("Caja abierta.");
+                     }else if(cajaabierta == true){
+                         System.out.println("La caja ya esta abierta.");
+                     }else{
+                         System.out.println("No se puedo abrir la caja.");
                      }
                  
                    } 
