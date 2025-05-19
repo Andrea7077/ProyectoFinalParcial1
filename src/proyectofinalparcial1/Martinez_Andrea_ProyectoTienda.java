@@ -19,7 +19,7 @@ public class Martinez_Andrea_ProyectoTienda {
          int opcion = 0;
          double efectivo =0, efectivoingresado =0; ;
          String sino="", estadodecaja ="";
-         boolean cajaabierta = false;
+         boolean cajaabierta = false, reaabrir=false;
          int contadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
          int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
@@ -76,18 +76,13 @@ public class Martinez_Andrea_ProyectoTienda {
             
            switch(opcion){
                case 1: //Abrir caja
-                       if (cajaabierta==false){
-                      estadodecaja="Cerrada.";
-                      }
                      System.out.println("\n***** ABRIR CAJA ******");
                      System.out.println("Estado de caja actualmente: " +estadodecaja);
-                     System.out.print("Desea agregar efectivo a la caja? (Si/No): ");
-                     sino = texto.next().toLowerCase();
-                     
-                     if (sino.equals("si")) {
-                      System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
-                      efectivoingresado = texto.nextDouble();
-                      if (efectivoingresado>0){
+                       if (cajaabierta==false){
+                        estadodecaja="Cerrada."; 
+                        System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
+                        efectivoingresado = texto.nextDouble();  
+                        if (efectivoingresado>0){
                           efectivo += efectivoingresado;
                           
                           if(cajaabierta == false){
@@ -97,10 +92,12 @@ public class Martinez_Andrea_ProyectoTienda {
 
                           }
                           System.out.println("Se agrego el efectivo.");
+                          
                       }
-                    
-
-                     }else if(cajaabierta == true){
+                     System.out.print("Desea agregar efectivo a la caja? (Si/No): ");
+                     sino = texto.next().toLowerCase();
+                      }
+                     else if(cajaabierta == true){
                          System.out.println("La caja ya esta abierta.");
 
                      }else{
@@ -479,16 +476,16 @@ public class Martinez_Andrea_ProyectoTienda {
                          }
                          System.out.println("\n****** REPORTES ******");
                          System.out.printf("Efectivo en la caja actualmente L. %.2f%n" ,efectivo);
-                         System.out.println("Numero de Ventas realizadas: "+contadorventas);
+                         System.out.println("\nNumero de Ventas realizadas: "+contadorventas);
                          System.out.println("Numero de Compras realizadas: "+contadorcompras);
                          System.out.printf("Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
                          System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);
                          System.out.println("Margen de ganancia: "+ganancia);
                          System.out.printf("Valor medio de ventas: L. %.2f%n",promedioventa);
                          System.out.printf("Valor medio de compras: L. %.2f%n",promediocompra);
-                         System.out.printf("Venta con mayor ganancia: L. %.2f%n",ventamayor);
+                         System.out.printf("\nVenta con mayor ganancia: L. %.2f%n",ventamayor);
                          System.out.printf("Compra con mayor ganancia: L. %.2f%n",compramayor);
-                         System.out.println("  PRODUCTO ESTRELLA ");
+                         System.out.println("\n  PRODUCTO ESTRELLA ");
                          System.out.println(productoestrella);
                       
                    } else {
@@ -499,24 +496,52 @@ public class Martinez_Andrea_ProyectoTienda {
                      
                case 5://cerrar caja
                     if (cajaabierta==true){
-                        
-                        
+                        double depositomaximo = efectivo * 0.60, deposito=0;
+                         double ganancia = totaldeventas - totaldecompras;
                        System.out.println("\n******* CIERRE DE CAJA  *******");
-                        System.out.printf("Actualmente tiene en la caja una cantidad de: %.2f%n " ,efectivo);
-
-                       System.out.println("Esta seguro de cerrar la caja? (Si/No)");
-                     sino = texto.next().toLowerCase();
+                        System.out.printf("Actualmente tiene en la caja una cantidad de: L. %.2f%n " ,efectivo);
+                        System.out.printf("Margen de ganacia: L. %.2f%n" ,ganancia);
+                        
+                        System.out.println("\n== DEPOSITAR ==");
+                        System.out.println("(Debe de depositar menos o el 60% del efectivo.)");
+                        
+                       /* System.out.println("Cuanto del efectivo desea depositar en el banco?(Si/No)");
+                        sino = texto.next().toLowerCase();*/
                        
                      if (sino.equals("si")) {
-                           cajaabierta = false;
-                     }
-                      
+                         System.out.printf("\nLo maximo que puede depositar es de: L. %.2f%n",depositomaximo);
+                         System.out.println("Ingrese la cantidad que depositara:");
+                         deposito = texto.nextDouble();
+                         
+                         if (deposito <=depositomaximo && deposito >0){
+                         efectivo -= deposito;
+                             System.out.printf("El deposito que se realizo fue de: L. %.2f%n",deposito);
+                             System.out.printf("Efectivo restante: L. %.2f%n",efectivo);
+                         }else{
+                             System.out.println("No puede depositar esta cantidad. Intentelo de nuevo.");
+                         }
+                     }else {
+                         System.out.println("No se realizo algun deposito.");
+                     } 
+                       contadorventas=0;
+                       contadorcompras = 0;
+                       ventakgdeazucar = 0; 
+                       ventakgdeavena=0;
+                       ventakgdetrigo=0;
+                       ventakgdemaiz=0;
+                       ventamayor=0;
+                       compramayor =0; 
+                       totaldeventas=0;
+                       totaldecompras=0;
+                       reaabrir = true;
+                       cajaabierta = false;
+                      System.out.println("Caja cerrada.");
+
                    }else{
                         System.out.println("La caja esta cerrada.");
                     
                     }
-                    
-                    
+                      
                     break;
 
                case 6: //salir del sistema 
