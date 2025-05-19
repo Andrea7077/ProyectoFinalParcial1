@@ -76,35 +76,58 @@ public class Martinez_Andrea_ProyectoTienda {
             
            switch(opcion){
                case 1: //Abrir caja
-                     System.out.println("\n***** ABRIR CAJA ******");
-                     System.out.println("Estado de caja actualmente: " +estadodecaja);
-                       if (cajaabierta==false){
+                          System.out.println("\n***** ABRIR CAJA ******");
+
+                       if (cajaabierta==true){
+                           System.out.println("Caja ya esta abierta.");
+                           estadodecaja = "Abierta.";
+                           System.out.println("Estado de caja actualmente: " +estadodecaja);
+
+                           continue;
+                       }
+                       
+                       
+                       if(reaabrir){
+                        cajaabierta =true;
+                        estadodecaja="Abierta."; 
+                        reaabrir = false;
+                          System.out.println("Estado de caja actualmente: " +estadodecaja);
+                          System.out.printf("El efectivo de la caja al reabrirla es de: L. %.2f%n ",efectivo);
+                        
+                       }else {
+                        cajaabierta =true;
                         estadodecaja="Cerrada."; 
-                        System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
-                        efectivoingresado = texto.nextDouble();  
-                        if (efectivoingresado>0){
+                           System.out.println("Estado de caja actualmente: " +estadodecaja);
+                           System.out.println("\nDesea abrir la caja? (Si/No)");
+                           sino = texto.next().toLowerCase();
+                         
+ 
+                     if (sino.equals("si")) {
+                         System.out.println("Ingrese la cantidad de efectivo para abrir la caja: ");
+                         efectivoingresado = texto.nextDouble();
+                            
+                         if (efectivoingresado>0){
                           efectivo += efectivoingresado;
                           
                           if(cajaabierta == false){
                              cajaabierta = true;
                               System.out.println("\nCaja abierta.");
+                              
                               estadodecaja ="Abierta";
 
+                          }else {
+                              System.out.println("No se pued abrir la caja, ingreso datos erroneos.");
                           }
-                          System.out.println("Se agrego el efectivo.");
-                          
-                      }
-                     System.out.print("Desea agregar efectivo a la caja? (Si/No): ");
-                     sino = texto.next().toLowerCase();
-                      }
-                     else if(cajaabierta == true){
-                         System.out.println("La caja ya esta abierta.");
-
+                         }
+                         
                      }else{
                          System.out.println("No se puede abrir la caja.");
                           estadodecaja ="Cerrada";
 
                      }
+                       }
+                           
+       
    
                  break;
                  
