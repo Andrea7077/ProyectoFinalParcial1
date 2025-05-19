@@ -25,12 +25,12 @@ public class Martinez_Andrea_ProyectoTienda {
          int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
          int ventakgdeazucar = 0, ventakgdeavena=0, ventakgdetrigo=0, ventakgdemaiz=0;
          double ventamayor=0, compramayor =0, totaldeventas=0, totaldecompras=0;
-         
+
 
          do{
              //menu 
              System.out.println("\n======================================");
-             System.out.println("          --- BIENVENIDO ---          ");
+             System.out.println("            ---  MENU  ---            ");
              System.out.println("======================================");
 
              System.out.printf("Efectivo en la caja: L %.2f%n",efectivo);
@@ -423,7 +423,7 @@ public class Martinez_Andrea_ProyectoTienda {
                             totalcompra = kgcompras * preciodecompra;
                             totaldecompras +=totalcompra;
                             if (totalcompra>compramayor){
-                                compramayor +=totalcompra;
+                                compramayor =totalcompra;
                             }
                             
                             if(totalcompra<= efectivo){
@@ -470,16 +470,16 @@ public class Martinez_Andrea_ProyectoTienda {
                          double ganancia = totaldeventas - totaldecompras;
                          double promediocompra=0.00, promedioventa=0.00;
                          System.out.println("\n****** REPORTES ******");
-                         System.out.printf("Efectivo en la caja actualmente L. %.2f%n: " ,efectivo);
+                         System.out.printf("Efectivo en la caja actualmente L. %.2f%n" ,efectivo);
                          System.out.println("Numero de Ventas realizadas: "+contadorventas);
                          System.out.println("Numero de Compras realizadas: "+contadorventas);
-                         System.out.printf("Volumen Total de las Ventas: L. %.2f%n: ",totaldeventas);
-                         System.out.printf("Volumen Total de las Compras: L. %.2f%n: ",totaldecompras);
+                         System.out.printf("Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
+                         System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);
                          System.out.println("Margen de ganancia: "+ganancia);
-                         System.out.printf("Valor medio de ventas: L. %.2f%n: ",promedioventa);
-                         System.out.printf("Valor medio de compras: L. %.2f%n: ",promediocompra);
-                         System.out.printf("Venta con mayor ganancia: L. %.2f%n: "+ventamayor);
-                         System.out.printf("Compra con mayor ganancia: L. %.2f%n: "+compramayor);
+                         System.out.printf("Valor medio de ventas: L. %.2f%n",promedioventa);
+                         System.out.printf("Valor medio de compras: L. %.2f%n",promediocompra);
+                         System.out.printf("Venta con mayor ganancia: L. %.2f%n",ventamayor);
+                         System.out.printf("Compra con mayor ganancia: L. %.2f%n",compramayor);
                       
                    } else {
                        System.out.println("No puedes ingresar a este apartado si no abres la caja");
