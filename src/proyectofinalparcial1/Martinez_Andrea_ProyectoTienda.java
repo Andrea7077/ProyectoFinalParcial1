@@ -150,9 +150,7 @@ public class Martinez_Andrea_ProyectoTienda {
                           while (!validarproductocliente){
                               System.out.print("\nIngrese el codigo del producto: ");
                              codigoprodu = texto.nextInt();
-                              
-                           
-                            
+
                              if (codigoprodu >=1 && codigoprodu<=4){
                                                
                              if (TipoClien.equals("a")){
