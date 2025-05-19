@@ -17,7 +17,7 @@ public class Martinez_Andrea_ProyectoTienda {
 
         
          int opcion = 0;
-         double efectivo =0 ;
+         double efectivo =0, efectivoingresado =0; ;
          String sino="";
          boolean cajaabierta = false;
          int cotadorventas=0, contadorcompras = 0;
@@ -76,13 +76,17 @@ public class Martinez_Andrea_ProyectoTienda {
                case 1: //Abrir caja
                  if (cajaabierta== false){
                      System.out.println("\n***** ABRIR CAJA ******");
-                     System.out.print("Desea proseguir? (Si/No): ");
+                     System.out.print("Desea agregar efectivo a la caja? (Si/No): ");
                      sino = texto.next().toLowerCase();
                      
                      if (sino.equals("si")) {
                       System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
-                      efectivo = texto.nextDouble();
-                      cajaabierta = true;
+                      efectivoingresado = texto.nextDouble();
+                      if (efectivoingresado>0){
+                        cajaabierta = true;
+                      }
+                      
+
                      }else if(cajaabierta == true){
                          System.out.println("La caja ya esta abierta.");
                      }else{
