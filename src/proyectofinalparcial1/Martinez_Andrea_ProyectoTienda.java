@@ -22,7 +22,7 @@ public class Martinez_Andrea_ProyectoTienda {
          boolean cajaabierta = false, reaabrir=false;
          int contadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
-         int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
+         int  disponible=0;
          int ventakgdeazucar = 0, ventakgdeavena=0, ventakgdetrigo=0, ventakgdemaiz=0;
          double ventamayor=0, compramayor =0, totaldeventas=0, totaldecompras=0;
 
@@ -151,7 +151,7 @@ public class Martinez_Andrea_ProyectoTienda {
                               System.out.println("No se puede abrir la caja, ingreso datos erroneos.");
                           }
                          }else{
-                          System.out.println("o se pudo abrir la caja.");
+                          System.out.println("No se pudo abrir la caja.");
                         }
                                    
                  break;
@@ -457,7 +457,7 @@ public class Martinez_Andrea_ProyectoTienda {
                          }
                          
                          if (puedecomprar){
-                         
+                             
                             System.out.print("Ingrese la cantidad a comprar(kg): ");
                             kgcompras = texto.nextInt();
                             
@@ -569,8 +569,8 @@ public class Martinez_Andrea_ProyectoTienda {
                         System.out.println("\n== DEPOSITAR ==");
                         System.out.println("(Debe de depositar menos o el 60% del efectivo.)");
                         
-                       /* System.out.println("Cuanto del efectivo desea depositar en el banco?(Si/No)");
-                        sino = texto.next().toLowerCase();*/
+                       System.out.println("Cuanto del efectivo desea depositar en el banco?(Si/No)");
+                        sino = texto.next().toLowerCase();
                        
                      if (sino.equals("si")) {
                          System.out.printf("\nLo maximo que puede depositar es de: L. %.2f%n",depositomaximo);
