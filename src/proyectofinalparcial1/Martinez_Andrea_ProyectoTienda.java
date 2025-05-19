@@ -539,16 +539,16 @@ public class Martinez_Andrea_ProyectoTienda {
                          }
                          System.out.println("\n****** REPORTES ******");
                          System.out.printf("Efectivo en la caja actualmente L. %.2f%n" ,efectivo);
-                         System.out.println("\nNumero de Ventas realizadas: "+contadorventas);
+                         System.out.println("\n- Numero de Ventas realizadas: "+contadorventas);
                          System.out.println("Numero de Compras realizadas: "+contadorcompras);
-                         System.out.printf("Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
+                         System.out.printf("- Volumen Total de las Ventas: L. %.2f%n",totaldeventas);
                          System.out.printf("Volumen Total de las Compras: L. %.2f%n",totaldecompras);
-                         System.out.println("Margen de ganancia: "+ganancia);
-                         System.out.printf("Valor medio de ventas: L. %.2f%n",promedioventa);
+                         System.out.println("- Margen de ganancia: "+ganancia);
+                         System.out.printf("- Valor medio de ventas: L. %.2f%n",promedioventa);
                          System.out.printf("Valor medio de compras: L. %.2f%n",promediocompra);
-                         System.out.printf("\nVenta con mayor ganancia: L. %.2f%n",ventamayor);
+                         System.out.printf("\n- Venta con mayor ganancia: L. %.2f%n",ventamayor);
                          System.out.printf("Compra con mayor ganancia: L. %.2f%n",compramayor);
-                         System.out.println("\n  PRODUCTO ESTRELLA ");
+                         System.out.println("\n== PRODUCTO ESTRELLA ==");
                          System.out.println(productoestrella);
                       
                    } else {
@@ -610,6 +610,7 @@ public class Martinez_Andrea_ProyectoTienda {
 
                case 6: //salir del sistema 
                    System.out.println("Saliendoo del sistema.");
+                   System.out.println("Que te vaya de maravilla!");
                    break;
            }
              
