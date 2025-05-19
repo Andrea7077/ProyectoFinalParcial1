@@ -18,7 +18,7 @@ public class Martinez_Andrea_ProyectoTienda {
         
          int opcion = 0;
          double efectivo =0, efectivoingresado =0; ;
-         String sino="";
+         String sino="", estadodecaja ="";
          boolean cajaabierta = false;
          int cotadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
@@ -74,8 +74,11 @@ public class Martinez_Andrea_ProyectoTienda {
             
            switch(opcion){
                case 1: //Abrir caja
-                 if (cajaabierta== false){
+                       if (cajaabierta==false){
+                      estadodecaja="Cerrada.";
+                      }
                      System.out.println("\n***** ABRIR CAJA ******");
+                     System.out.println("Estado de caja actualmente: " +estadodecaja);
                      System.out.print("Desea agregar efectivo a la caja? (Si/No): ");
                      sino = texto.next().toLowerCase();
                      
@@ -83,17 +86,27 @@ public class Martinez_Andrea_ProyectoTienda {
                       System.out.println("\nIngrese efectivo para poder abrir a la caja (LPS): ");
                       efectivoingresado = texto.nextDouble();
                       if (efectivoingresado>0){
-                        cajaabierta = true;
+                          efectivo += efectivoingresado;
+                          
+                          if(cajaabierta == false){
+                             cajaabierta = true;
+                              System.out.println("\nCaja abierta.");
+                              estadodecaja ="Abierta";
+
+                          }
+                          System.out.println("Se agrego el efectivo.");
                       }
-                      
+                    
 
                      }else if(cajaabierta == true){
                          System.out.println("La caja ya esta abierta.");
+
                      }else{
-                         System.out.println("No se puedo abrir la caja.");
+                         System.out.println("No se puede abrir la caja.");
+                          estadodecaja ="Cerrada";
+
                      }
-                 
-                   } 
+   
                  break;
                  
                case 2: //ventas
