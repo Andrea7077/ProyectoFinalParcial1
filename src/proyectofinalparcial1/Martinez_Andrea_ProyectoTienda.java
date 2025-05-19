@@ -89,46 +89,71 @@ public class Martinez_Andrea_ProyectoTienda {
                        
                        if(reaabrir){
                         cajaabierta =true;
-                        estadodecaja="Abierta."; 
+                        estadodecaja="Reabierta."; 
                         reaabrir = false;
+                       contadorventas=0;
+                       contadorcompras = 0;
+                       ventakgdeazucar = 0; 
+                       ventakgdeavena=0;
+                       ventakgdetrigo=0;
+                       ventakgdemaiz=0;
+                       ventamayor=0;
+                       compramayor =0; 
+                       totaldeventas=0;
+                       totaldecompras=0;
+                        
                           System.out.println("Estado de caja actualmente: " +estadodecaja);
                           System.out.printf("El efectivo de la caja al reabrirla es de: L. %.2f%n ",efectivo);
+                           System.out.println("Ya no puede agregar efectivo.");
+                        break;
                         
-                       }else {
+                        
+                       }
+                       if(cajaabierta) {
                         cajaabierta =true;
-                        estadodecaja="Cerrada."; 
+                        estadodecaja="Abierta."; 
                            System.out.println("Estado de caja actualmente: " +estadodecaja);
-                           System.out.println("\nDesea abrir la caja? (Si/No)");
+                           System.out.println("\nDesea agregar mas efectivo? (Si/No)");
                            sino = texto.next().toLowerCase();
                          
- 
                      if (sino.equals("si")) {
-                         System.out.println("Ingrese la cantidad de efectivo para abrir la caja: ");
+                         System.out.println("Ingrese la cantidad de efectivo: ");
                          efectivoingresado = texto.nextDouble();
                             
                          if (efectivoingresado>0){
                           efectivo += efectivoingresado;
-                          
-                          if(cajaabierta == false){
-                             cajaabierta = true;
-                              System.out.println("\nCaja abierta.");
-                              
-                              estadodecaja ="Abierta";
-
+                             System.out.println("Se agregro con exito.");
+                             System.out.printf("Nuevo efectivo en caja: L %.2f%n",efectivo);
                           }else {
-                              System.out.println("No se pued abrir la caja, ingreso datos erroneos.");
+                              System.out.println("No se puede abrir la caja, ingreso datos erroneos.");
                           }
-                         }
-                         
-                     }else{
-                         System.out.println("No se puede abrir la caja.");
-                          estadodecaja ="Cerrada";
-
-                     }
+                         }else{
+                         System.out.println("No se pudo abrir la caja.");
+                     }            
                        }
-                           
-       
-   
+                       
+                       
+                    estadodecaja="Cerrada.";
+                    System.out.println("Estado de caja actualmente: " +estadodecaja);
+                    System.out.println("Desea abrir la caja? (Si/No)");
+                    sino = texto.next().toLowerCase();
+                    
+                    if (sino.equals("si")) {
+                         System.out.println("Ingrese la cantidad de efectivo para poder abrir caja: ");
+                         efectivoingresado = texto.nextDouble();
+                            
+                         if (efectivoingresado>0){
+                          efectivo += efectivoingresado;
+                          cajaabierta=true;
+                             System.out.println("\nCaja abierta.");
+                             System.out.printf("Efectivo en caja: L %.2f%n",efectivo);
+                          }else {
+                              System.out.println("No se puede abrir la caja, ingreso datos erroneos.");
+                          }
+                         }else{
+                          System.out.println("o se pudo abrir la caja.");
+                        }
+                                   
                  break;
                  
                case 2: //ventas
@@ -241,7 +266,7 @@ public class Martinez_Andrea_ProyectoTienda {
                                    break;
                            }
                            
-                                    
+                            System.out.println("Este producto tiene una disponibilidad de: " +disponible);    
                             System.out.print("Ingrese la cantidad a comprar(kg): ");
                              kg = texto.nextDouble();
                         if (kg<=0){
@@ -488,6 +513,7 @@ public class Martinez_Andrea_ProyectoTienda {
                 case 4: //reportes
                      if (cajaabierta==true){
                          String productoestrella="Ninguno";
+                         int mayorkg =0;
                          double ganancia = totaldeventas - totaldecompras;
                          double promediocompra=0, promedioventa=0;
                          
@@ -496,6 +522,20 @@ public class Martinez_Andrea_ProyectoTienda {
                          }
                          if (contadorcompras> 0){
                          promediocompra = totaldecompras / contadorcompras;
+                         }
+                         
+                         if(ventakgdeazucar>mayorkg){
+                             mayorkg = ventakgdeazucar;
+                             productoestrella = "Azucar";
+                         }if(ventakgdeavena>mayorkg){
+                             mayorkg = ventakgdeavena;
+                             productoestrella = "Avena";
+                         }if(ventakgdetrigo>mayorkg){
+                             mayorkg = ventakgdetrigo;
+                             productoestrella = "Trigo";
+                         }if(ventakgdemaiz>mayorkg){
+                             mayorkg = ventakgdemaiz;
+                             productoestrella = "Maiz";
                          }
                          System.out.println("\n****** REPORTES ******");
                          System.out.printf("Efectivo en la caja actualmente L. %.2f%n" ,efectivo);
@@ -525,6 +565,7 @@ public class Martinez_Andrea_ProyectoTienda {
                         System.out.printf("Actualmente tiene en la caja una cantidad de: L. %.2f%n " ,efectivo);
                         System.out.printf("Margen de ganacia: L. %.2f%n" ,ganancia);
                         
+                        if (ganancia>0){                        
                         System.out.println("\n== DEPOSITAR ==");
                         System.out.println("(Debe de depositar menos o el 60% del efectivo.)");
                         
@@ -563,7 +604,7 @@ public class Martinez_Andrea_ProyectoTienda {
                    }else{
                         System.out.println("La caja esta cerrada.");
                     
-                    }
+                    }}
                       
                     break;
 
