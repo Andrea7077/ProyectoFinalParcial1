@@ -23,6 +23,7 @@ public class Martinez_Andrea_ProyectoTienda {
          int cotadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
          int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
+         
 
          do{
              //menu 
@@ -110,15 +111,15 @@ public class Martinez_Andrea_ProyectoTienda {
                          System.out.println("\nProductos disponibles:");
                            switch (TipoClien) {
                                case "a":
-                                   System.out.println("1. Azucar - $30     2. Avena  - $25");
-                                   System.out.println("3. Trigo  - $32     4. Maiz   - $20");
+                                   System.out.println("1. Azucar - L.30     2. Avena  - L.25");
+                                   System.out.println("3. Trigo  - L.32     4. Maiz   - L.20");
                                    break;
                                case "b":
-                                   System.out.println("1. Azucar - $30     2. Avena  - $25");
-                                   System.out.println("3. Trigo  - $32");
+                                   System.out.println("1. Azucar - L.30     2. Avena  - L.25");
+                                   System.out.println("3. Trigo  - L.32");
                                    break;
                                case "c":
-                                   System.out.println("4. Maiz   - $20");
+                                   System.out.println("4. Maiz   - L.20");
                                    break;
                                default:
                                    break;
@@ -195,9 +196,10 @@ public class Martinez_Andrea_ProyectoTienda {
                             System.out.println("No hay suficiente producto.");
                             System.out.println("Cantidad de kg actualmente: " +disponible);
                         }else{
-                            subtotal = kg * precioventas;
+                            totalapagarventas = kg * precioventas;
                             cotadorventas++;
-                            productosfactura+= "\n* Producto: " +nombreprodu+ " / Cantidad(kg): " +kg+ " / Precio(c/u): L. " +precioventas+" /  A pagar: "+subtotal;
+                            subtotal+=totalapagarventas;
+                            productosfactura+= "\n* Producto: " +nombreprodu+ " / Cantidad(kg): " +kg+ " / Precio(c/u): L. " +precioventas+" /  A pagar: "+ totalapagarventas;
                             
                             System.out.println("\nPrecio por kg: " +precioventas);
                             System.out.println("Subtotal: " +subtotal);
@@ -239,7 +241,7 @@ public class Martinez_Andrea_ProyectoTienda {
                                 System.out.println("Detalles:");
                                 System.out.println(productosfactura);
                                 
-                               System.out.printf("\nSubtotal: L. %.2f%n" ,subtotal);
+                               System.out.printf("Subtotal: L. %.2f%n" ,subtotal);
                                if (descuento>0){
                                 System.out.println("Descuento:" +descuento);
                                }else {
@@ -283,13 +285,13 @@ public class Martinez_Andrea_ProyectoTienda {
                          System.out.println("\nProductos disponibles por cada proveedor:");
                            switch (tipoProveedor) {
                                case "a":
-                                   System.out.println("1. Azucar - 25     4. Maiz  - $18");
+                                   System.out.println("1. Azucar - L.25     4. Maiz  - L.18");
                                    break;
                                case "b":
-                                   System.out.println("2. Avena - 20     3. Trigo  - $30");
+                                   System.out.println("2. Avena - L.20     3. Trigo  - L.30");
                                    break;
                                case "c":
-                                   System.out.println("2. Avena - 20");
+                                   System.out.println("2. Avena - L.20");
                                    break;
                                default:
                                    break;
