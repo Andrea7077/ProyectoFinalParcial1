@@ -20,11 +20,11 @@ public class Martinez_Andrea_ProyectoTienda {
          double efectivo =0, efectivoingresado =0; ;
          String sino="", estadodecaja ="";
          boolean cajaabierta = false;
-         int cotadorventas=0, contadorcompras = 0;
+         int contadorventas=0, contadorcompras = 0;
          int contadorazucar=0, contadormaiz=0, contadoravena=0, contadortrigo=0;
          int disponibleazucar = 0, disponiblemaiz =0, disponibleavena=0, disponibletrigo =0, disponible=0;
-         int kgdeazucar = 0, kgdeavena=0, kgdetrigo=0, kgdemaiz=0;
-         double ventamayor=0, compramayor =0, totaldeventas=, totaldecompras=0;
+         int ventakgdeazucar = 0, ventakgdeavena=0, ventakgdetrigo=0, ventakgdemaiz=0;
+         double ventamayor=0, compramayor =0, totaldeventas=0, totaldecompras=0;
          
 
          do{
@@ -231,7 +231,7 @@ public class Martinez_Andrea_ProyectoTienda {
                             System.out.println("Cantidad de kg actualmente: " +disponible);
                         }else{
                             totalapagarventas = kg * precioventas;
-                            cotadorventas++;
+                            contadorventas++;
                             subtotal+=totalapagarventas;
                             
                             totaldeventas+=totalapagarventas;
@@ -244,13 +244,21 @@ public class Martinez_Andrea_ProyectoTienda {
                             System.out.println("\nPrecio por kg: " +precioventas);
                             System.out.println("Subtotal: " +subtotal);
                             switch (codigoprodu){
-                                case 1: contadorazucar -= kg;
+                                case 1: 
+                                    contadorazucar -= kg;
+                                    ventakgdeazucar += kg;
                                         break; 
-                                case 2: contadoravena -= kg;
+                                case 2: 
+                                    contadoravena -= kg;
+                                    ventakgdeavena += kg;
                                         break;
-                                case 3: contadortrigo -= kg;
+                                case 3: 
+                                    contadortrigo -= kg;
+                                    ventakgdetrigo += kg;
                                         break;
-                                case 4: contadormaiz -= kg;
+                                case 4: 
+                                    contadormaiz -= kg;
+                                    ventakgdemaiz += kg;
                                         break;
                             }
                         }
@@ -413,6 +421,10 @@ public class Martinez_Andrea_ProyectoTienda {
                             }else{
                             
                             totalcompra = kgcompras * preciodecompra;
+                            totaldecompras +=totalcompra;
+                            if (totalcompra>compramayor){
+                                compramayor +=totalcompra;
+                            }
                             
                             if(totalcompra<= efectivo){
                                 efectivo -= totalcompra;
@@ -455,18 +467,28 @@ public class Martinez_Andrea_ProyectoTienda {
                      break;
                 case 4: //reportes
                      if (cajaabierta==true){
-                       System.out.println("\n****** REPORTES ******");
-                       
+                         double ganancia = totaldeventas - totaldecompras;
+                         double promediocompra=0.00, promedioventa=0.00;
+                         System.out.println("\n****** REPORTES ******");
+                         System.out.printf("Efectivo en la caja actualmente L. %.2f%n: " ,efectivo);
+                         System.out.println("Numero de Ventas realizadas: "+contadorventas);
+                         System.out.println("Numero de Compras realizadas: "+contadorventas);
+                         System.out.printf("Volumen Total de las Ventas: L. %.2f%n: ",totaldeventas);
+                         System.out.printf("Volumen Total de las Compras: L. %.2f%n: ",totaldecompras);
+                         System.out.println("Margen de ganancia: "+ganancia);
+                         System.out.printf("Valor medio de ventas: L. %.2f%n: ",promedioventa);
+                         System.out.printf("Valor medio de compras: L. %.2f%n: ",promediocompra);
+                         System.out.printf("Venta con mayor ganancia: L. %.2f%n: "+ventamayor);
+                         System.out.printf("Compra con mayor ganancia: L. %.2f%n: "+compramayor);
                       
                    } else {
                        System.out.println("No puedes ingresar a este apartado si no abres la caja");
-                   
+                       
                    }
                      break;
                      
                case 5://cerrar caja
                     if (cajaabierta==true){
-                        
                         
                         
                        System.out.println("\n******* CIERRE DE CAJA  *******");
